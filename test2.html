@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<style>
+			*{margin: 0;padding: 0;}
+			li{list-style: none;}
+			.content{width: 816px;margin: 30px auto;overflow: hidden;}
+			.content li{position: relative;float: left;width: 230px;height: 150px;border: 1px solid #ccc;margin: 20px;cursor: pointer;overflow: hidden;}
+			.content li img{display: block;width: 230px;height: 150px;position: absolute;transition: 0.5s ease-in;-moz-transition:.5s ease-in;-webkit-transition:.5s ease-in;-o-transition:.5s ease-in;-ms-transition:.5s ease-in;}
+			.content li .text{position: relative;top: -150px;left: 0;width: 230px;height: 150px;}
+			.text p{position:relative;top:0;width: 94%;line-height: 24px;padding-top: 60px;color: #fff;text-align: center;font-size: 12px;margin: 0 auto;}
+			.text a{position: absolute;top: 20px;left: 50%;width: 32px;height: 32px;margin-left: -16px;background: url(images/link.png) no-repeat;z-index: 1;}
+			.text div{position: absolute;width: 100%;height: 100%;top: 0;left: 0;background: #000;opacity: 0.7;filter: alpha(opacity=70);}
+		</style>
+	</head>
+	<body>
+		<ul class="content">
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+			<li>
+				<img src="images/huodong1.png"/>
+				<div class="text">
+					<div></div>
+					<p>出来混迟早要还的</p>
+					<a href="#"></a>	
+				</div>
+			</li>
+		</ul>
+	</body>
+	<script>
+		$('.content li').each(function(){
+			$(this).on('mouseenter',function(){
+				var e=e||window.event;
+				var angle=direct(e,this);
+				mouseEvent(angle,this,'enter');
+			});
+			$(this).on('mouseleave',function(){
+				var e=e||window.event;
+				var angle=direct(e,this);
+				mouseEvent(angle,this,'leave');
+			});
+		});
+		function direct(e,obj){
+			var w=obj.offsetWidth;
+			var h=obj.offsetHeight;
+			var top=obj.offsetTop;
+			var left=obj.offsetLeft;
+			var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+			var scrollLeft=document.body.scrollLeft||document.documentElement.scrollLeft;
+			var offLeft=left-scrollLeft;
+			var offTop=top-scrollTop;
+			var ex=(e.pageX-scrollLeft)||e.clientX;
+			var ey=(e.pageY-scrollTop)||e.clientY;
+			var x=(ex-offLeft-w/2)*(w>h?(h/w):1);
+			var y=(ey-offTop-h/2)*(h>w?(w/h):1);
+			console.log(x+'...'+y);
+			var angle=(Math.round((Math.atan2(y,x)*(180/Math.PI)+180)/90)+3)%4;//返回0123，atan2返回的是弧度 atan2(y,x)
+			return angle;
+		}
+		function mouseEvent(angle,obj,z){
+			var w=obj.offsetWidth;
+			var h=obj.offsetHeight;
+			if(z=='enter'){
+				switch(angle){
+					case 0:
+					$(obj).find('.text').css({left:0,top:-h+'px'}).stop(true).animate({left:0,top:0},300);
+					setTimeout(function(){
+						$(obj).find('.text a').css({left:'50%',top:-h+'px'}).stop(true).animate({left:'50%',top:20+'px'},300)
+					},200);
+					break;
+					case 1:
+					$(obj).find('.text').css({left:w+'px',top:0}).stop(true).animate({left:0,top:0},300);
+					setTimeout(function(){
+						$(obj).find('.text a').css({left:w+'px',top:20+'px'}).stop(true).animate({left:'50%',top:20+'px'},300)
+					},200);
+					break;
+					case 2:
+					$(obj).find('.text').css({left:0,top:h+'px'}).stop(true).animate({left:0,top:0},300);
+					setTimeout(function(){
+						$(obj).find('.text a').css({left:'50%',top:-h+'px'}).stop(true).animate({left:'50%',top:20+'px'},300)
+					},200);
+					break;
+					case 3:
+					$(obj).find('.text').css({left:-w+'px',top:0}).stop(true).animate({left:0,top:0},300);
+					setTimeout(function(){
+						$(obj).find('.text a').css({left:-w+'px',top:20+'px'}).stop(true).animate({left:'50%',top:20+'px'},300)
+					},200);
+					break;
+				}
+			}
+			else if(z=='leave'){
+				switch(angle){
+					case 0:
+					$(obj).find('.text a').stop(true).animate({left:'50%',top:-h+'px'},300);
+					setTimeout(function(){
+						$(obj).find('.text').stop(true).animate({left:0,top:-h+'px'},300);
+					},200);
+					break;
+					case 1:
+					$(obj).find('.text a').stop(true).animate({left:w+'px',top:20+'px'},300);
+					setTimeout(function(){
+						$(obj).find('.text').stop(true).animate({left:w+'px',top:0},300);
+					},200);
+					break;
+					case 2:
+					$(obj).find('.text a').stop(true).animate({left:'50%',top:h+'px'},300);
+					setTimeout(function(){
+						$(obj).find('.text').stop(true).animate({left:0,top:h+'px'},300);
+					},200);
+					break;
+					case 3:
+					$(obj).find('.text a').stop(true).animate({left:-w+'px',top:20+'px'},300);
+					setTimeout(function(){
+						$(obj).find('.text').stop(true).animate({left:-w+'px',top:0},300);
+					},200);
+					break;
+				}
+			}
+		}
+	</script>
+</html>

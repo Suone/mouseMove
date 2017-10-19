@@ -1,0 +1,98 @@
+@charset "utf-8";
+.text{transform-origin: right;transform: rotateY(120deg);}
+.in-top{
+	transform-origin: top;
+	animation: in-top 300ms ease 0ms 1 forwards;
+}
+.in-bottom{
+	transform-origin:bottom;
+	animation: in-bottom 300ms ease 0ms 1 forwards;
+}
+.in-left{
+	transform-origin: left;
+	animation: in-left 300ms ease 0ms 1 forwards;
+}
+.in-right{
+	transform-origin: right;
+	animation: in-right 300ms ease 0ms 1 forwards;
+}
+.out-top{
+	transform-origin: top;
+	animation: out-top 300ms ease 0ms 1 forwards;
+}
+.out-bottom{
+	transform-origin:bottom;
+	animation: out-bottom 300ms ease 0ms 1 forwards;
+}
+.out-left{
+	transform-origin: left;
+	animation: out-left 300ms ease 0ms 1 forwards;
+}
+.out-right{
+	transform-origin: right;
+	animation: out-right 300ms ease 0ms 1 forwards;
+}
+@keyframes in-top{
+	from{
+		transform: rotateX(-120deg);
+	}
+	to{
+		transform: rotateX(0);
+	}
+}
+@keyframes in-bottom{
+	from{
+		transform: rotateX(120deg);
+	}
+	to{
+		transform: rotateX(0);
+	}
+}
+@keyframes in-left{
+	from{
+		transform: rotateY(120deg);
+	}
+	to{
+		transform: rotateY(0);
+	}
+}
+@keyframes in-right{
+	from{
+		transform: rotateY(-120deg);
+	}
+	to{
+		transform: rotateY(0);
+	}
+}
+@keyframes out-top{
+	from{
+		transform: rotateX(0deg);
+	}
+	to{
+		transform: rotateX(-120deg);
+	}
+}
+@keyframes out-bottom{
+	from{
+		transform: rotateX(0deg);
+	}
+	to{
+		transform: rotateX(120deg);
+	}
+}
+@keyframes out-left{
+	from{
+		transform: rotateY(0deg);
+	}
+	to{
+		transform: rotateY(120deg);
+	}
+}
+@keyframes out-right{
+	from{
+		transform: rotateY(0deg);
+	}
+	to{
+		transform: rotateY(-120deg);
+	}
+}

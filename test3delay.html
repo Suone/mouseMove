@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<style>
+			body{overflow: hidden;}
+			.box{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				width: 50px;
+				height: 50px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"><img src="images/headpic.jpg"/></div>
+	</body>
+	<script>
+		var box=document.getElementsByClassName('box')[0];
+		var w=document.documentElement.clientWidth||document.body.clientWidth;
+		var h=document.documentElement.clientHeight||document.body.clientHeight;
+		box.style.left=(w-box.offsetWidth)/2+'px';
+		box.style.top=(h-box.offsetHeight)/2+'px';
+		var i=0;
+		var x=0;
+		var obox=[];
+		var oImg=[];
+		document.onmousemove=function(e){
+			var e= e||window.event;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			var ex=e.pageX-scrollLeft||e.clientX;
+			var ey=e.pageY-scrollTop||e.clientY;
+			setTimeout(function(){
+				box.style.left=ex-box.offsetWidth/2+'px';
+				box.style.top=ey-box.offsetWidth/2+'px';
+				console.log(obox.length)
+//				for(var j=0;j<obox.length;j++){
+//					obox[j].style.left=ex+box.offsetWidth/2+box.offsetWidth*j+'px';
+//					obox[j].style.top=ey+box.offsetHeight/2+box.offsetHeight*j+'px';	
+//				}
+			},100)
+		}
+		setInterval(function(){
+			box.style.transform='rotate('+i+'deg)';
+			i++;
+		},1000/60);
+		
+//		box.onclick=function(){
+//			obox[x]=document.createElement('div');
+//			obox[x].className='box';
+//			oImg[x]=new Image();
+//			oImg[x].src='images/headpic.jpg';
+//			obox[x].appendChild(oImg[x]);
+//			document.body.appendChild(obox[x]);
+//			x++;
+//		}
+	</script>
+</html>
